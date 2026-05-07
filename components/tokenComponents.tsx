@@ -27,7 +27,7 @@ function arrayBufferToBase64(buffer: ArrayBuffer): string {
     let binary = '';
     const bytes = new Uint8Array(buffer);
     for (let i = 0; i < bytes.length; i += 8192) {
-        binary += String.fromCharCode(...bytes.subarray(i, Math.min(i + 8192, bytes.length)));
+        binary += String.fromCharCode(...Array.from(bytes.subarray(i, Math.min(i + 8192, bytes.length))));
     }
     return btoa(binary);
 }
